@@ -1,0 +1,15 @@
+.wrapper{
+    height: 500px;
+    width: 50%;
+    background-color: powderblue;
+    align-items: center;
+    display: flex;
+}
+.flying-box{
+    margin-left: 60px;
+    padding: 80px;
+    color: white;
+    background-color: red;
+    font-size: 1.5rem;
+
+}

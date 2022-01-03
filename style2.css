@@ -1,0 +1,13 @@
+.grid{
+    width:49%;
+    height: 240px;
+    background-color: rgb(221, 136, 24);
+}
+.box{
+    padding: 10px;
+    padding-left: 100px;
+    padding-right: 100px;
+    background-color: aqua;
+    margin-top: 5px;
+    display: inline-block;
+}

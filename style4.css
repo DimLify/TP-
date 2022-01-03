@@ -1,0 +1,39 @@
+.container{
+    background-color: rgb(196, 93, 93);
+    justify-content: center;
+    position: relative;
+    display: flex;
+    height: 600px;
+}
+.animation1{
+    font-size: 30px;
+    animation-name: rotate;
+    animation-duration: 5s;
+    animation-fill-mode: forwards;
+    margin-right: 40px;
+}
+.animation2{
+    font-size: 30px;
+    animation-name: rotate;
+    animation-duration: 5s;
+    animation-fill-mode: forwards;
+}
+.animation3{
+    font-size: 30px;
+    animation-name: rotate;
+    animation-duration: 7s;
+    animation-fill-mode: forwards;
+    margin-left: 30px;
+}
+
+@keyframes rotate{
+    
+        from{
+           transform: translateY(0px);
+        }
+        to{
+            transform: translateY(300px);
+
+        } 
+}
+
