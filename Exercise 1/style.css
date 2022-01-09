@@ -1,0 +1,19 @@
+#imageCanvas {
+    width: 600px;
+    height: 600px;
+    border: 1px solid black;
+    background-color: white;
+}
+
+body{
+  display: flex;
+  justify-content: center;
+}
+
+.border{
+  padding: 2px;
+  background-color: #C84D33 ;
+  width: fit-content;
+  color: white;
+  text-align: center;
+}

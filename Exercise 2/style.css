@@ -1,0 +1,39 @@
+body {
+    background-color: rgba(97, 105, 122, 0.5);
+}
+
+#canvas,
+#canvasp {
+    border: 10px solid rgba(233, 119, 119, 0.7);
+    border-top: 5px solid rgba(78, 39, 39, 0.7);
+    background-color: rgba(0, 0, 0, 0.4);
+}
+
+.control {
+    background-color: rgba(153, 153, 153, 0.7);
+    width: 520px;
+}
+
+.control > span {
+    color: #e9e0e0;
+}
+
+.control>div>button {
+    margin-bottom: 5px;
+    color: #08030a;
+    border: 2px solid #a81f1f;
+    border-radius: 5%;
+    margin-top: 3px;
+}
+
+#start {
+    background-color:#D5F50A;
+}
+
+#stop {
+    background-color: rgba(0, 255, 213, 0.8);
+}
+
+#pause {
+    background-color: rgba(2, 255, 57, 0.8);
+}
