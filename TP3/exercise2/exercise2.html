@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
+        integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
+    <title>Login Form</title>
+    <style>
+        h1 {
+            color: #483D8B;
+        }
+
+        .horizline {
+            border-width: 5px;
+            border-color: #4B0082;
+        }
+
+        h2 {
+            font-size: 20px;
+        }
+
+        .firstcard {
+            background-color: white;
+            border-style: solid;
+            border-color: #D3D3D3;
+
+        }
+
+        img {
+            margin-top: 20px;
+            height: 150px;
+            width: 150px;
+            border-radius: 80px;
+        }
+
+        .bottomheading {
+            font-weight: bold;
+            font-size: 19px;
+            color: black;
+        }
+    </style>
+</head>
+
+<body>
+    
+    <form action="welcome.html">
+                    
+        <div class="firstcard ">
+            <div class="text-center">
+            <img src="https://www.w3schools.com/howto/img_avatar2.png"
+            class="imags"/>
+          
+            </div>
+
+            <label for="username"><b>Username</b></label><br />
+            <input class="w-100 " type="text" placeholder="Enter Username" name="username" required><br />
+
+            <label for="password"><b>Password</b></label><br />
+            <input class="w-100" type="password" placeholder="Enter Password" name="password" required><br />
+
+            <button class=" btn btn-success w-100 mt-3 mb-3">Login</button>
+        </div>
+
+    </form>
+</body>
+
+</html>
+<script>
+    function submit() {
+        alert("logged in succesfully");
+    }
+    document.cookie = "lify";
+    alert(document.cookie);
+    let name = "username"
+    let value = "password"
+    document.cookie = encodeURIComponent(usernamer) + '=' + encodeURIComponent(password);
+    alert(document.cookie);
+</script>
