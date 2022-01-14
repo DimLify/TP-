@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
+<style>
+.grid-container {
+  display: grid;
+  grid-template-columns: 300px auto;
+  grid-gap: 5px;
+  background-color: hsl(0deg 0% 92%);
+  padding: 5px;
+  padding-bottom: 50vh;
+}
+
+.grid-container > div {
+  /* background-color: rgba(255, 255, 255, 0.8); */
+  text-align: center;
+}
+
+.booklist-container {
+  display: grid;
+  grid-template-columns: auto auto auto auto;
+  grid-gap: 5px;
+  background-color: hsl(0deg 0% 92%);
+  padding: 5px;
+}
+
+.booklist-container > div {
+  background-color: rgba(255, 255, 255, 0.8);
+  text-align: center;
+}
+
+.actionButttons {
+  text-align: right;
+}
+
+.actionButttons > button {
+  margin: 3px;
+}
+
+.details {
+  text-align: left;
+  margin: 5px;
+}
+
+.form {
+  text-align: left;
+  padding: 5px;
+}
+</style>
+</head>
+<body>
+
+<h1>Book shop CRUD</h1>
+
+<div class="grid-container">
+  <div>
+    <form class="form" id="bookForm"><br>
+        Name: <input type="text" placeholder="Enter book name..." name="name"><br><br>
+        Category: <input type="text" placeholder="Enter book category..." name="category"><br><br>
+        Price: <input type="text" placeholder="Enter book price..." name="price"><br><br>
+        <input type="submit" value="Add">
+    </form>
+  </div>
+  <div>
+    <div class="booklist-container" id="booklist">
+    </div>
+  </div>
+</div>
+</body>
+<script src="https://code.jquery.com/jquery-3.6.0.js" integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk=" crossorigin="anonymous"></script>
+<script>
+
+  $(document).ready(function() {
+    localStorage.setItem("booklist","");
+  })
+  var index=0
+  $("#bookForm").on("submit", function(evt) {
+      evt.preventDefault()
+      $inputs = $('#bookForm :input')
+      values = {}
+      $inputs.each(function() {
+          values[this.name] = $(this).val()
+      })
+      if(values["name"]==""||values["category"]==""||values["price"]=="") {
+        return
+      }
+      if($('input[type="submit"]').val()=="Add")
+      {
+        book={
+          name: values["name"],
+          category: values["category"],
+          price: values["price"]
+        }
+        books=localStorage.getItem("booklist")
+        bookList=[]
+        if(books.length) {
+          bookList=JSON.parse(localStorage.getItem("booklist"))
+        }
+        bookList.push(book)
+        localStorage.setItem("booklist",JSON.stringify(bookList))
+      }
+      else{
+        bookList=JSON.parse(localStorage.getItem("booklist"))
+        bookList[index].name=$('input[name="name"]').val()
+        bookList[index].category=$('input[name="category"]').val()
+        bookList[index].price=$('input[name="price"]').val()
+        console.log(bookList)
+        localStorage.setItem("booklist",JSON.stringify(bookList))
+      }
+      displayBookList()
+      $("#bookForm")[0].reset()
+      $('input[type="submit"]').val("Add")
+  })
+  function displayBookList() {
+      $("#booklist").html('')
+      books=localStorage.getItem("booklist")
+      bookList=[]
+      if(books.length) {
+        bookList=JSON.parse(localStorage.getItem("booklist"))
+      }
+      for(i in bookList) {
+        $("#booklist").append('<div><div class="actionButttons"><button onclick="delBook('+i+')">Delete</button><button onclick="updateBook('+i+')">Change Name</button></div><img src="book.jpg" width="400px" height="400px"><br><div class="details">Name: '+bookList[i].name+'<br>Price: '+bookList[i].price+'<br>Category: '+bookList[i].category+'<div></div>')
+      }
+  }
+  function delBook(i)
+  {
+    bookList=JSON.parse(localStorage.getItem("booklist"))
+    newList=[]
+    for(j in bookList) {
+      if(i!=j) {
+        newList.push(bookList[j])
+      }
+    }
+    console.log(newList)
+    localStorage.setItem("booklist",JSON.stringify(newList))
+    $("#bookForm")[0].reset()
+    displayBookList()
+  }
+  function updateBook(i)
+  {
+    bookList=JSON.parse(localStorage.getItem("booklist"))
+    $('input[name="name"]').val(bookList[i].name)
+    $('input[name="category"]').val(bookList[i].category)
+    $('input[name="price"]').val(bookList[i].price)
+    $('input[type="submit"]').val("Update")
+    index=i
+  }
+  console.log(localStorage);
+
+  </script>
+</html>
