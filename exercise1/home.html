@@ -1,0 +1,45 @@
+<html>
+<head>
+  <style>
+	  div{
+		text-align:center;
+                background-color:lightblue;
+                padding:20px;
+	  }
+        h1{color:green}
+        h3{color:blue}
+  </style>
+  <script>
+    function MyClass(){
+    this.num=localStorage.getItem('count')?parseInt(localStorage.getItem('count')):0;
+      this.increase=function(){
+        this.num++;
+        localStorage.setItem('count', this.num.toString());
+        document.getElementsByTagName("h1")[0].innerHTML=this.num;
+      }
+      this.decrease=function(){
+  	this.num--;
+        localStorage.setItem('count', this.num.toString());
+        document.getElementsByTagName("h1")[0].innerHTML=this.num;
+      }
+      this.reset=function(){
+  	this.num=0;
+        localStorage.setItem('count', this.num.toString());
+        document.getElementsByTagName("h1")[0].innerHTML=this.num;
+      }
+    }
+    var classInstance = new MyClass();
+    window.onload=()=>{
+     document.getElementsByTagName("h1")[0].innerHTML=localStorage.getItem('count');}
+  </script>
+</head>
+<body>
+    <div>
+	<h3>Counter</h3>
+	<h1>0</h1>
+        <button onClick="classInstance.decrease()">Decrease</button>
+        <button type="button" onclick="classInstance.reset()">Reset</button>
+        <button type="button" onclick="classInstance.increase()">Increase</button>
+    </div>
+</body>
+</html>
